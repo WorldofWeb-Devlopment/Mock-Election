@@ -22,36 +22,33 @@ function App() {
     if (!selected) return;
     
 
-   
-  try {
-    const voteRef = doc(db, "election", "votes");
+   try {
+     const voteRef = doc(db, "votes", "election");
 
-    await updateDoc(voteRef, {
-      [`votes.candidate_${selected.id}`]: increment(1),
-    });
+     await updateDoc(voteRef, {
+       [`candidates.candidate_${selected.id}.votes`]: increment(1),
+     });
 
-    console.log("Vote added:", selected.name);
+     console.log("Vote added:", selected.name);
 
-    toast.success("🗳️ Vote submitted successfully!", {
-      position: "bottom-center",
-      autoClose: 1000,
-      hideProgressBar: false,
-      closeOnClick: false,
-      pauseOnHover: true,
-      draggable: true,
-      theme: "light",
-      transition: Bounce,
-      onClose: () => setHasVoted(false),
-    });
+     toast.success("🗳️ Vote submitted successfully!", {
+       position: "bottom-center",
+       autoClose: 1000,
+       hideProgressBar: false,
+       closeOnClick: false,
+       pauseOnHover: true,
+       draggable: true,
+       theme: "light",
+       transition: Bounce,
+       onClose: () => setHasVoted(false),
+     });
 
-    setHasVoted(true);
+     setHasVoted(true);
+   } catch (error) {
+     console.error("Vote failed:", error);
 
-  } catch (error) {
-    console.error("Vote failed:", error);
-
-    toast.error("❌ Vote submission failed");
-  }
-    
+     toast.error("❌ Vote submission failed");
+   }
   }
   
   
