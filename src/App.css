@@ -1,38 +1,410 @@
-.App {
-  text-align: center;
+:root {
+  /* =========================================
+     1. Background & Cards (Dark Theme)
+     ========================================= */
+  --bg: rgba(2, 6, 23, 1); /* Main background */
+  --card: rgba(15, 23, 42, 1); /* Card surface */
+  --card-light: rgba(30, 41, 59, 1); /* Inner box / highlight */
+  --border: rgba(51, 65, 85, 1); /* Border line */
+
+  /* =========================================
+     2. Text Colors
+     ========================================= */
+  --text-white: rgba(255, 255, 255, 1); /* Main Heading text */
+  --text-sub: rgba(148, 163, 184, 1); /* Subtitle / normal text */
+  --text-dim: rgba(100, 116, 139, 1); /* Footer / small text */
+
+  /* =========================================
+     3. Primary Buttons & Gold Accents
+     ========================================= */
+  --gold: rgba(251, 191, 36, 1); /* Main Vote button / yellow */
+  --gold-hover: rgba(245, 158, 11, 1); /* Button hover */
+  --gold-glow: rgba(251, 191, 36, 0.3); /* Glow effect */
+  --blue: rgba(37, 99, 235, 1); /* Blue vote button */
+  --blue-hover: rgba(29, 78, 216, 1); /* Blue hover */
+
+  /* =========================================
+     4. EVM Machine & LED Lights
+     ========================================= */
+  --evm-bg: rgba(226, 232, 240, 1); /* Machine grey body */
+  --evm-border: rgba(203, 213, 225, 1); /* Machine border */
+  --led-green: rgba(16, 185, 129, 1); /* Ready green light */
+  --led-red: rgba(225, 29, 72, 1); /* Vote red light (ON) */
+  --led-red-off: rgba(76, 5, 25, 0.6); /* Red light (OFF) */
+  --slip-bg: rgba(254, 252, 232, 1); /* VVPAT paper slip */
+
+  /* =========================================
+     5. Original Mockup Colors (Figma Screen)
+     ========================================= */
+  --figma-bg: rgba(45, 89, 178, 1); /* Screen cobalt blue */
+  --figma-yellow: rgba(246, 201, 68, 1); /* Screen yellow button */
+  --figma-card: rgba(93, 126, 185, 1); /* Card light blue */
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+/* src/index.css */
+body {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  background-color: var(--bg);
+  width: 100%;
   min-height: 100vh;
+}
+
+h1,
+h2,
+h3,
+.font-display {
+  font-family: "Outfit", sans-serif;
+}
+
+.main {
+  max-width: 1420px;
+  margin: 0px auto;
+  padding: 0 20px;
+}
+.nav {
+  width: 100%;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+}
+.nav img {
+  width: 110px;
+  margin-right: 10px;
+  margin-top: 20px;
+}
+.nav h1 {
+  color: var(--text-white);
+  font-size: 32px;
+}
+.classname {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
 
-.App-link {
-  color: #61dafb;
+.classname h3 {
+  color: #38bdf8;
+  font-size: 2rem;
 }
 
-@keyframes App-logo-spin {
+.classname h2 {
+  color: var(--gold);
+  font-size: 4rem;
+  font-weight: 400;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  margin-bottom: 30px;
+}
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 10px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.polling {
+  width: 350px;
+  background-color: var(--card);
+  margin-top: 20px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  grid-column: span 2;
+}
+.polling:nth-child(4) {
+  grid-column: 2 / span 2;
+}
+.symbols {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 10px;
+  object-fit: contain;
+}
+
+.symbols img {
+  width: 150px;
+  border-radius: 50%;
+}
+.img1 {
+  background-color: var(--card-light);
+  padding: 10px 10px 0px 10px;
+  border: 2px solid #38bdf8;
+}
+
+.poll-1 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1rem;
+  padding: 10px 20px;
+  background-color: var(--bg);
+  border-radius: 10px;
+  border-bottom: 1px solid var(--border);
+}
+.index {
+  color: var(--gold);
+  background-color: var(--card-light);
+  padding: 10px;
+  border: 1px solid var(--evm-border);
+  border-radius: 10px;
+  text-align: center;
+  font-weight: bold;
+  font-family: "Outfit", sans-serif;
+  font-size: 1rem;
+}
+.class {
+  color: #38bdf8;
+  background-color: #06597d4c;
+  font-weight: bold;
+  font-family: "Outfit", sans-serif;
+  border-radius: 10px;
+  text-align: center;
+  padding: 10px;
+  border: 1px solid #7dd4fa;
+  font-size: 1rem;
+}
+
+.names {
+  text-align: center;
+  color: var(--text-white);
+  font-size: 2rem;
+  margin-top: 10px;
+  font-weight: bold;
+  font-family: "Outfit", sans-serif;
+}
+
+.ready {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: fit-content;
+  margin: 10px auto 20px;
+}
+
+.ready button {
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  font-weight: normal;
+  font-family: "Outfit", sans-serif;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.ready.notselected button {
+  background-color: var(--blue);
+  color: var(--text-white);
+}
+
+.ready.selected button {
+  background: linear-gradient(135deg, #facc15, #f59e0b);
+  color: #1e293b;
+  box-shadow:
+    0 0 10px rgba(250, 204, 21, 0.65),
+    0 0 22px rgba(245, 158, 11, 0.35);
+  animation: selected-button-glow 1.8s ease-in-out infinite alternate;
+}
+
+.polling.selected {
+  border: 2px solid var(--gold);
+  transition: all 0.2s ease-in;
+  transform: scale(1.02);
+  box-shadow:
+    0 0 8px rgba(246, 201, 68, 0.45),
+    0 0 20px rgba(246, 201, 68, 0.25),
+    0 0 40px rgba(246, 201, 68, 0.12);
+}
+
+@keyframes selected-button-glow {
   from {
-    transform: rotate(0deg);
+    box-shadow:
+      0 0 8px rgba(250, 204, 21, 0.5),
+      0 0 16px rgba(245, 158, 11, 0.25);
   }
+
   to {
-    transform: rotate(360deg);
+    box-shadow:
+      0 0 14px rgba(250, 204, 21, 0.9),
+      0 0 30px rgba(245, 158, 11, 0.5);
+  }
+}
+.candidate-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.card {
+  flex: 0 0 calc(33.333% - 20px);
+  box-sizing: border-box;
+}
+
+/* Bottom vote bar */
+.vote-bar {
+  width: min(900px, 90%);
+  margin: 30px auto 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 16px 20px;
+  border: 1px solid #2d59b2;
+  border-radius: 18px;
+
+  background: #0b1530;
+}
+
+.vote-bar button {
+  background: var(--card-light);
+  color: var(--text-dim);
+  border: 1px solid var(--border);
+  padding: 14px 28px;
+  border-radius: 12px;
+  font-weight: 700;
+  cursor: pointer;
+}
+/* .vote-bar button {
+  background: #f6c944;
+  color: #081326;
+  border: none;
+  padding: 14px 28px;
+  border-radius: 12px;
+  font-weight: 700;
+  cursor: pointer;
+} */
+.vote-message {
+  color: var(--text-sub);
+  margin-right: 10px;
+}
+.vote-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  background: var(--card-light);
+  color: var(--text-dim);
+  border: 1px solid var(--border);
+  padding: 14px 28px;
+  border-radius: 12px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.vote-btn span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  font-weight: bold;
+}
+
+.vote-btn.selected{
+  background: #f6c944;
+  color: black;
+  border: 1px solid #fbe191;
+  padding: 14px 28px;
+  border-radius: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.5 ease-in;
+  transform: scale(1.1);
+}
+
+@media (max-width: 1100px) {
+  .card-container {
+    grid-template-columns: repeat(2, minmax(0, 350px));
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .polling,
+  .polling:nth-child(4) {
+    width: 100%;
+    grid-column: auto;
+  }
+}
+
+@media (max-width: 640px) {
+  .main {
+    padding: 0 8px;
+  }
+
+  .nav {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .nav img {
+    width: 80px;
+    margin: 16px 0 8px;
+  }
+
+  .nav h1 {
+    font-size: 1.35rem;
+    line-height: 1.35;
+  }
+
+  .classname {
+    margin-top: 18px;
+  }
+
+  .classname h3 {
+    font-size: 1.3rem;
+  }
+
+  .classname h2 {
+    font-size: clamp(2.25rem, 11vw, 3.25rem);
+    text-align: center;
+  }
+
+  .card-container {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 20px;
+    width: 100%;
+  }
+
+  .polling {
+    margin-top: 0;
+    min-height: 420px;
+  }
+
+  .symbols {
+    gap: 12px;
+    justify-content: center;
+  }
+
+  .symbols img {
+    width: min(40vw, 170px);
+  }
+
+  .names {
+    font-size: 1.8rem;
+  }
+
+  .vote-bar {
+    width: 100%;
+    margin: 24px auto 16px;
+    flex-direction: column;
+    gap: 16px;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .vote-message {
+    margin-right: 0;
+  }
+
+  .vote-bar button {
+    width: 100%;
+  }
+
+  .vote-btn.selected {
+    transform: none;
   }
 }
