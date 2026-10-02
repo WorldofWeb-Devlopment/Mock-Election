@@ -5,6 +5,8 @@ import Data from "./Data";
 import Vote from "./Vote";
 import { ToastContainer, toast, Bounce } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { db } from "./firebase";
+import { doc, updateDoc, increment } from "firebase/firestore";
 
 function App() {
   const [selected, setSelectd] = useState(null);
@@ -16,8 +18,19 @@ function App() {
     setSelectd(Candidate);
   }
 
-  function handlevote() {
+  async function handlevote() {
     if (!selected) return;
+    
+
+   
+  try {
+    const voteRef = doc(db, "election", "votes");
+
+    await updateDoc(voteRef, {
+      [`votes.candidate_${selected.id}`]: increment(1),
+    });
+
+    console.log("Vote added:", selected.name);
 
     toast.success("🗳️ Vote submitted successfully!", {
       position: "bottom-center",
@@ -30,16 +43,14 @@ function App() {
       transition: Bounce,
       onClose: () => setHasVoted(false),
     });
-    //Adding Votes to Candidate 
-    // setVotes((prev) => {
-    //   const updatedVotes = {
-    //     ...prev,
-    //     [selected.name]: (prev[selected.name] || 0) + 1
-    //   }
-    //   console.log(updatedVotes)
-    //   return updatedVotes;
-    // })
+
     setHasVoted(true);
+
+  } catch (error) {
+    console.error("Vote failed:", error);
+
+    toast.error("❌ Vote submission failed");
+  }
     
   }
   
