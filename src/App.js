@@ -29,7 +29,7 @@ function App() {
        [`candidates.candidate_${selected.id}.votes`]: increment(1),
      });
 
-     console.log("Vote added:", selected.name);
+     console.log("Vote added:", selected.name,selected.votes);
 
      toast.success("🗳️ Vote submitted successfully!", {
        position: "bottom-center",
