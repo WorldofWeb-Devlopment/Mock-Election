@@ -8,8 +8,9 @@ import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   const [selected, setSelectd] = useState(null);
-  const[votes,setVotes] = useState({})
+  // const[votes,setVotes] = useState({})
   const [hasVoted, setHasVoted] = useState(false);
+     
 
   function handleselected(Candidate) {
     setSelectd(Candidate);
@@ -30,14 +31,14 @@ function App() {
       onClose: () => setHasVoted(false),
     });
     //Adding Votes to Candidate 
-    setVotes((prev) => {
-      const updatedVotes = {
-        ...prev,
-        [selected.name]: (prev[selected.name] || 0) + 1
-      }
-      console.log(updatedVotes)
-      return updatedVotes;
-    })
+    // setVotes((prev) => {
+    //   const updatedVotes = {
+    //     ...prev,
+    //     [selected.name]: (prev[selected.name] || 0) + 1
+    //   }
+    //   console.log(updatedVotes)
+    //   return updatedVotes;
+    // })
     setHasVoted(true);
     
   }
@@ -47,7 +48,7 @@ function App() {
   return (
     <div className="main">
       <section className="nav">
-        <img src={CBSE} />
+        <img src={CBSE} alt={CBSE} />
         <h1>
           DNU <strong> SMBM </strong> NATIONAL PUBLIC SCHOOL
         </h1>
