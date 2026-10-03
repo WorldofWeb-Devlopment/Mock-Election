@@ -5,11 +5,11 @@ import Emblem from "./image/Emblem.png";
 import News from "./image/News.png";
 import Book from "./image/Book.png";
 import Card from "./Components/Card";
-import img1  from './image/172620.jpg'
-import img2  from './image/172679.jpg'
-import img3  from './image/172829.jpg'
-import img4  from './image/172833.jpg'
-import img5  from './image/173671.jpg'
+import img1 from "./image/optimized/172620.jpg";
+import img2 from "./image/optimized/172679.jpg";
+import img3 from "./image/optimized/172829.jpg";
+import img4 from "./image/optimized/172833.jpg";
+import img5 from "./image/optimized/173671.jpg";
 
 
 function Data({ selected, handleselected }) {

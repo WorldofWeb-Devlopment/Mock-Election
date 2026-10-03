@@ -12,7 +12,15 @@ function Card({Candidate,selected,id,handleselected}) {
         <p className="class">{Candidate.className}</p>
       </div>
       <div className="symbols">
-        <img src={Candidate.photo} className="img1" alt={Candidate.photo} />
+        <img
+          src={Candidate.photo}
+          className="img1"
+          alt={Candidate.name}
+          width="150"
+          height="150"
+          loading="lazy"
+          decoding="async"
+        />
         <img src={Candidate.symbol} alt={Candidate.symbol} />
       </div>
       <div className="names">
