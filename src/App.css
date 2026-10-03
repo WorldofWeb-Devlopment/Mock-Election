@@ -128,12 +128,16 @@ h3,
 
 .symbols img {
   width: 150px;
-  border-radius: 50%;
 }
 .img1 {
   background-color: var(--card-light);
-  padding: 10px 10px 0px 10px;
   border: 2px solid #38bdf8;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
 }
 
 .poll-1 {
@@ -381,6 +385,10 @@ h3,
 
   .symbols img {
     width: min(40vw, 170px);
+  }
+
+  .symbols .img1 {
+    height: min(40vw, 170px);
   }
 
   .names {

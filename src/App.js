@@ -33,7 +33,7 @@ function App() {
 
      toast.success("🗳️ Vote submitted successfully!", {
        position: "bottom-center",
-       autoClose: 1000,
+       autoClose: 2000,
        hideProgressBar: false,
        closeOnClick: false,
        pauseOnHover: true,

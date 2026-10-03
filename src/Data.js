@@ -1,47 +1,52 @@
-import png from "./image/PNG.png";
+
 import Globe from "./image/Globe.png";
 import Compass from "./image/Compass.png";
 import Emblem from "./image/Emblem.png";
 import News from "./image/News.png";
 import Book from "./image/Book.png";
 import Card from "./Components/Card";
+import img1  from './image/172620.jpg'
+import img2  from './image/172679.jpg'
+import img3  from './image/172829.jpg'
+import img4  from './image/172833.jpg'
+import img5  from './image/173671.jpg'
 
 
 function Data({ selected, handleselected }) {
   const Candidate = [
     {
       id: 1,
-      name: "Tamizhi",
+      name: "TAMIZHNI V",
       className: "V - A",
-      photo: png,
+      photo: img3,
       symbol: Globe,
     },
     {
       id: 2,
-      name: "Syham Sunder",
+      name: "SHYAAM K R",
       className: "V - B",
-      photo: png,
+      photo: img1,
       symbol: Book,
     },
     {
       id: 3,
-      name: "Neha Shree",
+      name: "NEHASHRI S",
       className: "V - C",
-      photo: png,
+      photo: img4,
       symbol: News,
     },
     {
       id: 4,
-      name: "Rithish",
+      name: "RITHISH S",
       className: "V - D",
-      photo: png,
+      photo: img2,
       symbol: Compass,
     },
     {
       id: 5,
-      name: "Akshara",
+      name: "AKSHARA M",
       className: "V - E",
-      photo: png,
+      photo: img5,
       symbol: Emblem,
     },
   ];
