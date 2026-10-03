@@ -20,7 +20,7 @@ function App() {
 
   async function handlevote() {
     if (!selected) return;
-    
+        setHasVoted(true);
 
    try {
      const voteRef = doc(db, "votes", "election");
@@ -43,7 +43,7 @@ function App() {
        onClose: () => setHasVoted(false),
      });
 
-     setHasVoted(true);
+ 
    } catch (error) {
      console.error("Vote failed:", error);
 
