@@ -12,6 +12,7 @@ function App() {
   const [selected, setSelectd] = useState(null);
   // const[votes,setVotes] = useState({})
   const [hasVoted, setHasVoted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
      
 
   function handleselected(Candidate) {
@@ -19,8 +20,8 @@ function App() {
   }
 
   async function handlevote() {
-    if (!selected) return;
-        setHasVoted(true);
+    if (!selected || isSubmitting) return;
+    setIsSubmitting(true);
 
    try {
      const voteRef = doc(db, "votes", "election");
@@ -30,6 +31,7 @@ function App() {
      });
 
      console.log("Vote added:", selected.name,selected.votes);
+     setHasVoted(true);
 
      toast.success("🗳️ Vote submitted successfully!", {
        position: "bottom-center",
@@ -48,6 +50,8 @@ function App() {
      console.error("Vote failed:", error);
 
      toast.error("❌ Vote submission failed");
+   } finally {
+     setIsSubmitting(false);
    }
   }
   
@@ -68,7 +72,13 @@ function App() {
       <div className="card-container">
         <Data selected={selected} handleselected={handleselected} />
       </div>
-      {!hasVoted && <Vote Candidate={selected} onVote={handlevote} />}
+      {!hasVoted && (
+        <Vote
+          Candidate={selected}
+          onVote={handlevote}
+          isSubmitting={isSubmitting}
+        />
+      )}
       <ToastContainer
         position="bottom-center"
         autoClose={5000}
